@@ -1,24 +1,13 @@
-s = "pwwkew";
-var lengthOfLongestSubstring = function(s) {
-    let usedChar = [];
-    let longestSubString = "";
-    let currentSubstring = "";
-    for (let i = 0; i < s.length; i++){
-        if (usedChar.includes(s[i])) {
-            if (longestSubString.length < currentSubstring.length)
-                longestSubString = currentSubstring;
-        
-            currentSubstring = currentSubstring.substring(usedChar.indexOf(s[i]) + 1);
-            usedChar = currentSubstring.split("");
-        }
-        currentSubstring += s[i];
-        usedChar.push(s[i]);
-    }
-    if (longestSubString.length < currentSubstring.length)
-        longestSubString = currentSubstring;
+nums = [1,1,1,2,2,3], k = 2
 
-    return longestSubString.length;
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number[]}
+ */
+var topKFrequent = function(nums, k) {
+    
 };
 
-let ans = lengthOfLongestSubstring(s);
+let ans = topKFrequent(nums, k);
 console.log(ans);
