@@ -32,25 +32,31 @@ var swapPairs = function(head) {
     // Check if the head is too small for swapping
     if (head === null || head.next === null)
         return head;
-
-    let swapNode = head;
-    let newHead = swapNode.next;
-
-    // Function for swapping node pairs
+    
+    let dummy = new ListNode();
+    dummy.next = head;
+    swapNodes(dummy);
+    return dummy.next;
+    
     function swapNodes(swapNode) {
-        let nextNode = swapNode.next.next;
-        let newFirst = swapNode.next;
-        newFirst.next = swapNode;
-        swapNode = nextNode;
-        return swapNode
+        if (swapNode === null)
+            return;
+        
+        let first = swapNode.next;
+        let second = null;
+        if (first != null)
+            second = first.next;
+        if (second != null) {
+            let afterSecond = second.next;
+
+            // Swap
+            second.next = first;
+            swapNode.next = second;
+            first.next = afterSecond;
+            swapNodes(first);
+        }
     }
-
-    // Recursively swap the rest of the list
-    while (swapNode != null)
-        swapNode = swapNodes(swapNode);
-
-    return newHead;
-};
+}
 
 let ans = swapPairs(head);
 
