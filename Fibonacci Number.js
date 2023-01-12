@@ -5,7 +5,7 @@
 
 const startTime = performance.now();
 
-n = 4;
+n = 6;
 
 /**
  * @param {number} n
@@ -24,15 +24,10 @@ var fib = function(n) {
         if (n < 2)
             return n;
         else {
-            let precedingOne = (n - 1);
-            if (storedN.has(precedingOne))
-                precedingOne = storedN.get(precedingOne);
-        
-            let precedingTwo = (n - 2);
-            if (storedN.has(precedingTwo))
-                precedingTwo = storedN.get(precedingTwo);
-        
-            result = fib(precedingOne) + fib(precedingTwo);
+            if (storedN.has(n))
+                result = storedN.get(n);
+
+            result = fibonacci(n - 1) + fibonacci(n - 2);
         }
     
         storedN.set(n, result);
